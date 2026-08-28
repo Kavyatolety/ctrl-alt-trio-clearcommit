@@ -39,7 +39,7 @@ export default function Home(){
   function exportCsv(){if(!confirmed.length)return notify('Confirm at least one commitment first.');const q=(v:string|number)=>`"${String(v).replaceAll('"','""')}"`;const csv=['Owner,Commitment,Due,Confidence,Evidence',...confirmed.map(i=>[i.owner,i.task,i.due,`${i.confidence}%`,i.evidence].map(q).join(','))].join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='clearcommit-confirmed.csv';a.click();URL.revokeObjectURL(a.href);notify('CSV downloaded.');}
 
   return <main>
-    <nav><div className="brand"><span className="brandMark">C</span><span>ClearCommit<small>Meeting accountability</small></span></div><div className="navMeta"><span className="liveDot"/>Private by design · nothing stored</div></nav>
+    <nav><div className="brand"><span className="brandMark" aria-hidden="true"><i>C</i><b>✓</b></span><span className="wordmark"><span>Clear<strong>Commit</strong></span><small>Meeting accountability</small></span></div><div className="navMeta"><span className="liveDot"/>Private by design · nothing stored</div></nav>
     <header className="hero"><div><p className="eyebrow">FROM TALK TO OWNERSHIP</p><h1>Leave every meeting with<br/><em>the next step clear.</em></h1><p>Turn a transcript into editable, evidence-backed commitments. Review the uncertain details, confirm what’s real, then send the follow-up.</p></div><div className="how"><b>How it works</b><span><i>1</i> Paste transcript</span><span><i>2</i> Review & confirm</span><span><i>3</i> Share next steps</span></div></header>
     <section className="workspace">
       <div className="panel inputPanel">
